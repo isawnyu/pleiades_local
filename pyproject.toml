@@ -1,0 +1,31 @@
+#
+# This file is part of pleiades_local
+# by Tom Elliott for the Institute for the Study of the Ancient World
+# (c) Copyright 2023 by New York University
+# Licensed under the AGPL-3.0; see LICENSE.txt file.
+#
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pleiades_local"
+version = "0.0.1"
+authors = [
+  { name="Tom Elliott", email="tom.elliott@nyu.edu" },
+]
+description = "Read Pleiades JSON from the local file system"
+readme = "README.md"
+requires-python = ">=3.11.3"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+  "pytest"
+]
+[project.urls]
+# "Homepage" = "https://github.com/pypa/sampleproject"
+# "Bug Tracker" = "https://github.com/pypa/sampleproject/issues"
