@@ -91,7 +91,11 @@ class PleiadesFilesystem:
                     )
 
     def verify_index(self):
-        """Verify that the existing index is valid for the files actually on the filesystem"""
+        """
+        Verify that the existing index is valid for the files actually on the filesystem.
+
+        NB: does not detect if there is a file on the filesystem that is not in the index
+        """
         if self.index:
             for pid, filepath in self.index.items():
                 if filepath.suffix != ".json":
