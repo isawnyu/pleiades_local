@@ -9,6 +9,7 @@
 Seek and use Pleiades JSON on the filesystem
 """
 
+import functools
 import json
 import os
 from pathlib import Path
@@ -63,6 +64,17 @@ class PleiadesFilesystem:
 
     def get_pids(self):
         return list(self.index.keys())
+
+    @property
+    @functools.lru_cache(maxsize=None)
+    def last_modified(self):
+        """Return the last modified time of the most recently modified file in the index."""
+        if self.index:
+            return max(p.stat().st_mtime for p in self.index.values())
+        else:
+            raise PleiadesFilesystemNoIndexError(
+                "No index is defined for the filesystem."
+            )
 
     def reindex(self):
         """Create a new index for the files actually on the filesystem."""

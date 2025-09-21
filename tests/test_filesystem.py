@@ -53,3 +53,12 @@ class TestPreindexed:
         pfs = PleiadesFilesystem(root_path, catalog=root_path / "catalog.json")
         with raises(PleiadesFilesystemError):
             pfs.verify_index()
+
+
+class TestLastModified:
+    def test_all(self):
+        root_path = Path("tests/data/preindexed/")
+        pfs = PleiadesFilesystem(root_path, catalog=root_path / "catalog.json")
+        lm = pfs.last_modified
+        assert isinstance(lm, float)
+        assert lm > 0
