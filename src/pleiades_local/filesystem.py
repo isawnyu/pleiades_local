@@ -61,6 +61,9 @@ class PleiadesFilesystem:
             del fp
             return j
 
+    def get_pids(self):
+        return list(self.index.keys())
+
     def reindex(self):
         """Create a new index for the files actually on the filesystem."""
         self.index = dict()
@@ -115,3 +118,6 @@ class PleiadesFilesystem:
                 yield from self._scantree(entry.path)
             else:
                 yield entry
+
+    def __len__(self):
+        return len(self.index)
