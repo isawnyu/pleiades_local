@@ -39,7 +39,7 @@ class TestComplex:
 
 
 class TestPreindexed:
-    def test_all(self):
+    def test_all_valid(self):
         root_path = Path("tests/data/preindexed/")
         pfs = PleiadesFilesystem(root_path, catalog=root_path / "catalog.json")
         pfs.verify_index()
@@ -48,9 +48,7 @@ class TestPreindexed:
         with raises(PleiadesFilesystemNotIndexedError):
             j = pfs.get("8675309")
 
-
-class TestPreindexed:
-    def test_all(self):
+    def test_all_invalid(self):
         root_path = Path("tests/data/preindexed_invalid/")
         pfs = PleiadesFilesystem(root_path, catalog=root_path / "catalog.json")
         with raises(PleiadesFilesystemError):
